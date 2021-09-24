@@ -25,7 +25,7 @@ namespace CollageProj
         {
             foreach (Class myClass in _myClasses)
             {
-                if (classID == myClass.GetID())
+                if (classID == myClass.GetID() || myClass.GetSubject() == _collegeAttending.GetClass(classID).GetSubject())
                 {
                     return false;
                 }
@@ -55,9 +55,9 @@ namespace CollageProj
             _myGrades[classID].Add(grade);
         }
 
-
         public void ShowAllGrades()
         {
+            Console.WriteLine($"--Grades for {Name}:--");
             foreach (Class myClass in _myClasses)
             {
                 float averageScore = 0;
@@ -72,7 +72,7 @@ namespace CollageProj
                 averageScore /= totalTests;
                 averageScore *= 100;
 
-                Console.WriteLine($"{myClass.GetSubject()}: {averageScore}%");
+                Console.WriteLine($"{(int)averageScore} % - {myClass.GetSubject()}");
             }
         }
     }

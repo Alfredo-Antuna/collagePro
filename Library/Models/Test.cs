@@ -12,11 +12,16 @@ namespace CollageProj
         public Test(Student[] allStudents, int maxScore)
         {
             _maxScore = maxScore;
+            StudentScores = new Dictionary<string, int>();
+            StudentGrades = new Dictionary<string, float>();
 
             foreach (Student student in allStudents)
             {
-                StudentScores.Add(student.Name, 0);
-                StudentGrades.Add(student.Name, 0);
+                if (student != null)
+                {
+                    StudentScores.Add(student.Name, 0);
+                    StudentGrades.Add(student.Name, 0);
+                }
             }
         }
 

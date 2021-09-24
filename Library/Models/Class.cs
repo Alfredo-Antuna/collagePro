@@ -103,6 +103,24 @@ namespace CollageProj
             }
         }
 
+        public void GradeLatestTest()
+        {
+            if (_tests.Count > 0)
+            {
+                int latestIndex = _tests.Count - 1;
+
+                _tests[latestIndex].GradeAll();
+
+                foreach (Student student in _seats)
+                {
+                    if (student != null)
+                    {
+                        student.AddGradeForClass(_classID, _tests[latestIndex].StudentGrades[student.Name]);
+                    }
+                }
+            }
+        }
+
         public List<float> GetMeanScores()
         {
             List<float> allMeanScores = new List<float>();

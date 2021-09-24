@@ -54,6 +54,11 @@ namespace CollageProj
             this.GetClassWithID(classID).TakeLatestTest();
         }
 
+        public void GradeLatestTest(int classID)
+        {
+            this.GetClassWithID(classID).GradeLatestTest();
+        }
+
         public List<float> GetMeanScores(int classID)
         {
             return this.GetClassWithID(classID).GetMeanScores();

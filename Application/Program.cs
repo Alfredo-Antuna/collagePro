@@ -12,6 +12,8 @@ namespace Application
 
             Console.WriteLine("MAIN APP STARTING!");
 
+            Console.WriteLine();
+
             // Get subjects
             var SubjectList = Fetch.GetDataFromHttp().GetAwaiter().GetResult();
             College myCollege = new College(SubjectList);
@@ -69,6 +71,26 @@ namespace Application
             {
                 someClass.ShowMembers();
             }
+
+            foreach (Teacher teacher in myCollege.TeacherList)
+            {
+                foreach (Class someClass in teacher.Classes)
+                {
+                    int classID = someClass.GetID();
+                    teacher.MakeTest(classID, 100);
+                    teacher.GiveStudentsTest(classID);
+                    teacher.GradeLatestTest(classID);
+                }
+            }
+
+            Console.WriteLine();
+
+            foreach (Student student in myCollege.StudentList)
+            {
+                student.ShowAllGrades();
+            }
+
+            Console.WriteLine();
         }
     }
 }
